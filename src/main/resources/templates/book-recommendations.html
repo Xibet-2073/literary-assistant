@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Recommendations</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; }
+        h1 { color: #333; }
+        form { margin-bottom: 20px; }
+        input[type="text"] { padding: 5px; width: 200px; }
+        input[type="submit"] { padding: 5px 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        #recommendations { white-space: pre-wrap; background-color: #f4f4f4; padding: 15px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+<h1>Book Recommendations</h1>
+
+<form th:action="@{/books/recommend}" method="get">
+    <label for="genre">Enter a genre:</label>
+    <input type="text" id="genre" name="genre" required>
+    <input type="submit" value="Get Recommendations">
+</form>
+
+<div th:if="${recommendations}">
+    <h2>Recommendations:</h2>
+    <pre id="recommendations" th:text="${recommendations}"></pre>
+</div>
+</body>
+</html>
